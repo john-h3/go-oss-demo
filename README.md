@@ -7,4 +7,10 @@
 
 目前只是一个单机版本的实现，下一章会将接口与数据存储解耦合以支持后续的分布式实现。
 
-## 第二章未开始
+[第一章笔记](https://note.yahui.tech/notes/object-storage-golang-book/start.html)
+
+## 第二章实现中
+
+[第二章笔记](https://note.yahui.tech/notes/object-storage-golang-book/ch02.html)
+
+部署文档准备中

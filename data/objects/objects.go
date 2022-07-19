@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var Dir = os.TempDir() + "/objects/"
+var Dir = os.Getenv("STORAGE_DIR") + "/"
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	m := r.Method

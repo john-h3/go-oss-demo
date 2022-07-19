@@ -1,6 +1,7 @@
 package locate
 
 import (
+	"go-oss-demo/data/objects"
 	"go-oss-demo/rabbitmq"
 	"os"
 	"strconv"
@@ -12,7 +13,7 @@ func Locate(name string) bool {
 }
 
 func StartLocate() {
-	mq := rabbitmq.New(os.Getenv("RABBITMQ_URL"))
+	mq := rabbitmq.New(os.Getenv("RABBITMQ_SERVER"))
 	defer mq.Close()
 	mq.Bind("dataServers")
 	c := mq.Consume()
@@ -21,7 +22,7 @@ func StartLocate() {
 		if e != nil {
 			panic(e)
 		}
-		if Locate(os.Getenv("STORAGE_DIR") + "/objects/" + s) {
+		if Locate(objects.Dir + s) {
 			mq.Send(msg.ReplyTo, os.Getenv("LISTEN_ADDR"))
 		}
 	}

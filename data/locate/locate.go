@@ -3,6 +3,7 @@ package locate
 import (
 	"go-oss-demo/data/objects"
 	"go-oss-demo/rabbitmq"
+	"go-oss-demo/utils"
 	"os"
 	"strconv"
 )
@@ -23,7 +24,7 @@ func StartLocate() {
 			panic(e)
 		}
 		if Locate(objects.Dir + s) {
-			mq.Send(msg.ReplyTo, os.Getenv("LISTEN_ADDR"))
+			mq.Send(msg.ReplyTo, utils.GetLocalIP()+":"+os.Getenv("LISTEN_PORT"))
 		}
 	}
 }

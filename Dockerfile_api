@@ -1,0 +1,9 @@
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY build/apiServer apiServer
+RUN chmod +x apiServer
+
+EXPOSE 8080
+CMD ["./apiServer"]

@@ -13,5 +13,5 @@ func main() {
 	go heartbeat.StartHeartbeat()
 	go locate.StartLocate()
 	http.HandleFunc("/objects/", objects.Handler)
-	log.Fatal(http.ListenAndServe(os.Getenv("LISTEN_ADDR"), nil))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("LISTEN_PORT"), nil))
 }

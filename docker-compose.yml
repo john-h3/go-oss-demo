@@ -1,0 +1,22 @@
+services:
+  api_server:
+    build:
+      context: .
+      dockerfile: Dockerfile_api
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - LISTEN_PORT=8080
+      - RABBITMQ_SERVER
+  data_server:
+    build:
+      context: .
+      dockerfile: Dockerfile_data
+    env_file:
+      - .env
+    environment:
+      - LISTEN_PORT=8081
+      - RABBITMQ_SERVER
+      - STORAGE_DIR

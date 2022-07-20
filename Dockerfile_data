@@ -1,0 +1,9 @@
+FROM golang:alpine
+
+WORKDIR /dataStorage
+
+COPY build/dataServer /app/dataServer
+RUN chmod +x /app/dataServer
+
+EXPOSE 8081
+CMD ["/app/dataServer"]
